@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { ITEM_TYPES } from "./Data";
 import Card from "./Card";
 function DragDropCards({
