@@ -1,9 +1,13 @@
 import "./App.css";
+import Header from "./components/Header/Header";
 import Notepad from "./components/Notepad/Notepad";
-import { useStateContext } from "./context/DragDropContextProvider";
 
 const App: React.FC = () => {
-  return <Notepad />;
+  return (
+    <>
+      <Header /> <Notepad />
+    </>
+  );
 };
 
 export default App;
