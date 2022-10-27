@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import { ITEM_TYPES } from "./Data";
+import { Droppable } from "react-beautiful-dnd";
+
 import Card from "./Card";
+import { v4 as uuidv4 } from "uuid";
 function DragDropCards({
   cards,
   tasks,
@@ -12,87 +13,6 @@ function DragDropCards({
   setCardOrder,
 }: any) {
   const [editing, setEditing] = useState(null);
-
-  const onDragEnd = (result: any) => {
-    const { destination, source, draggableId, type } = result;
-
-    if (
-      !destination ||
-      (destination.droppableId === source.droppableId &&
-        destination.index === source.index)
-    ) {
-      return;
-    }
-
-    if (type === ITEM_TYPES.CARD) {
-      reorderCards(source, destination, draggableId);
-    } else {
-      // type === tasks
-      const start = cards[source.droppableId];
-      const finish = cards[destination.droppableId];
-      if (start.id === finish.id) {
-        reorderTasksWithinCard(
-          start,
-          source.index,
-          destination.index,
-          draggableId
-        );
-      } else {
-        moveTask(start, finish, source.index, destination.index, draggableId);
-      }
-    }
-  };
-
-  const reorderCards = (source: any, destination: any, draggableId: any) => {
-    const newCardOrder = Array.from(cardOrder);
-    newCardOrder.splice(source.index, 1);
-    newCardOrder.splice(destination.index, 0, draggableId);
-    setCardOrder(newCardOrder);
-  };
-
-  const reorderTasksWithinCard = (
-    card: any,
-    sourceIdx: any,
-    destinationIdx: any,
-    draggableId: any
-  ) => {
-    const newTaskIds = Array.from(card.taskIds);
-    newTaskIds.splice(sourceIdx, 1);
-    newTaskIds.splice(destinationIdx, 0, draggableId);
-    setCards({
-      ...cards,
-      [card.id]: {
-        ...card,
-        taskIds: newTaskIds,
-      },
-    });
-  };
-
-  const moveTask = (
-    start: any,
-    finish: any,
-    sourceIdx: any,
-    destinationIdx: any,
-    draggableId: any
-  ) => {
-    const startTaskIds = Array.from(start.taskIds);
-    startTaskIds.splice(sourceIdx, 1);
-    const newStart = {
-      ...start,
-      taskIds: startTaskIds,
-    };
-    const finishTaskIds = Array.from(finish.taskIds);
-    finishTaskIds.splice(destinationIdx, 0, draggableId);
-    const newFinish = {
-      ...finish,
-      taskIds: finishTaskIds,
-    };
-    setCards({
-      ...cards,
-      [newStart.id]: newStart,
-      [newFinish.id]: newFinish,
-    });
-  };
 
   const onAddNewTask = (cardID: any, content: any) => {
     const newTask = {
@@ -139,7 +59,7 @@ function DragDropCards({
     setEditing(null);
   };
 
-  const onSaveTaskEdit = (taskID: any, cardID: string, newContent: string) => {
+  const onSaveTaskEdit = (taskID: any, cardID: any, newContent: any) => {
     if (newContent.trim() === "") {
       onRemoveTask(taskID, cardID);
     } else if (newContent !== tasks[taskID].content) {
@@ -156,43 +76,38 @@ function DragDropCards({
   }
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="all-cards" direction="horizontal" type="card">
-        {(provided) => (
-          <CardsContainer {...provided.droppableProps} ref={provided.innerRef}>
-            {cardOrder.map((id: any, index: any) => {
-              const card = cards[id];
-              const cardTasks = card.taskIds.map(
-                (taskId: any) => tasks[taskId]
-              );
-              return (
-                <Card
-                  key={card.id}
-                  card={card}
-                  tasks={cardTasks}
-                  index={index}
-                  onSaveTitleEdit={(title: any) =>
-                    onSaveTitleEdit(card.id, title)
-                  }
-                  onRemoveCard={() => onRemoveCard(card.id)}
-                  onAddNewTask={(content: any) =>
-                    onAddNewTask(card.id, content)
-                  }
-                  onSaveTaskEdit={(taskID: any, newContent: any) =>
-                    onSaveTaskEdit(taskID, card.id, newContent)
-                  }
-                  onTitleDoubleClick={() => setEditing(card.id)}
-                  onTaskDoubleClick={(task: any) => setEditing(task.id)}
-                  isTitleEditing={editing === card.id}
-                  isTaskEditing={(task: any) => editing === task.id}
-                />
-              );
-            })}
-            {provided.placeholder}
-          </CardsContainer>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <Droppable droppableId="all-cards" direction="horizontal" type="card">
+      {(provided) => (
+        <CardsContainer {...provided.droppableProps} ref={provided.innerRef}>
+          {cardOrder.map((id: any, index: any) => {
+            const card = cards[id];
+
+            const cardTasks = card.taskIds.map((taskId: any) => tasks[taskId]);
+            return (
+              <Card
+                key={card.id}
+                card={card}
+                tasks={cardTasks}
+                index={index}
+                onSaveTitleEdit={(title: any) =>
+                  onSaveTitleEdit(card.id, title)
+                }
+                onRemoveCard={() => onRemoveCard(card.id)}
+                onAddNewTask={(content: any) => onAddNewTask(card.id, content)}
+                onSaveTaskEdit={(taskID: any, newContent: any) =>
+                  onSaveTaskEdit(taskID, card.id, newContent)
+                }
+                onTitleDoubleClick={() => setEditing(card.id)}
+                onTaskDoubleClick={(task: any) => setEditing(task.id)}
+                isTitleEditing={editing === card.id}
+                isTaskEditing={(task: any) => editing === task.id}
+              />
+            );
+          })}
+          {provided.placeholder}
+        </CardsContainer>
+      )}
+    </Droppable>
   );
 }
 

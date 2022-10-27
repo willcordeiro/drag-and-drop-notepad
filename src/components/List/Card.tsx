@@ -48,7 +48,7 @@ function Card(props: any) {
                   {...provided.droppableProps}
                   isDraggingOver={snapshot.isDraggingOver}
                 >
-                  {props.tasks.map((task: any, index: string) => (
+                  {props.tasks.map((task: any, index: any) => (
                     <Task
                       key={task.id}
                       task={task}

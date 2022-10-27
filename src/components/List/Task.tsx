@@ -1,10 +1,8 @@
-import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import EditInput from "./EditInput";
 
 function Task(props: any) {
-  console.log(props);
   return (
     <TaskContainer>
       {props.isTaskEditing ? (
@@ -50,4 +48,5 @@ const TaskContent = styled.div<TaskContent>`
   border-radius: 2px;
   background-color: ${(props) => (props.isDragging ? "lightgreen" : "white")};
   width: 100%;
+  cursor: pointer;
 `;

@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { DATASET } from "./Data";
 import DragDropCards from "./DragDropCards";
+import { DragDropContext } from "react-beautiful-dnd";
+import { v4 as uuidv4 } from "uuid";
+import { ITEM_TYPES } from "./Data";
 
 function App1() {
   const [dataset, _] = useState(() => {
