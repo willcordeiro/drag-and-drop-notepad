@@ -1,8 +1,9 @@
 import "./App.css";
+import Notepad from "./components/Notepad/Notepad";
+import { useStateContext } from "./context/DragDropContextProvider";
 
-import App1 from "./components/List/app1";
-function App() {
-  return <App1 />;
-}
+const App: React.FC = () => {
+  return <Notepad />;
+};
 
 export default App;

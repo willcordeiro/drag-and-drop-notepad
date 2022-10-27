@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Droppable } from "react-beautiful-dnd";
+import Card from "../Card/Card";
 
-import Card from "./Card";
-import { v4 as uuidv4 } from "uuid";
 function DragDropCards({
   cards,
   tasks,

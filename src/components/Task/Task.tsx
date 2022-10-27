@@ -1,6 +1,6 @@
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
-import EditInput from "./EditInput";
+import EditInput from "../EditInput/EditInput";
 
 function Task(props: any) {
   return (

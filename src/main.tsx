@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContextProvider } from "./context/DragDropContextProvider";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <DragDropContext>
+  <DragDropContextProvider>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </DragDropContext>
+  </DragDropContextProvider>
 );
