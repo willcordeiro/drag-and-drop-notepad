@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
