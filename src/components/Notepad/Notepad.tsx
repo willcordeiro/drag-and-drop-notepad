@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import DragDropCards from "../DragDropCards/DragDropCards";
 import { useStateContext } from "../../context/DragDropContextProvider";
+import { ThemeProps } from "../../styles/Themes";
+
+type GlobalThemeProps = {
+  theme: ThemeProps;
+};
 
 function Notepad() {
   const {
@@ -56,10 +61,11 @@ export const Menu = styled.div`
 `;
 
 const Note = styled.div`
-  font-size: 1em;
+  font-size: 1rem;
   margin: 20px 0;
   text-align: left;
   overflow-wrap: break-word;
+  color: ${({ theme }: GlobalThemeProps) => theme.color};
 `;
 
 const NewCard = styled.div`

@@ -4,11 +4,20 @@ import styled from "styled-components";
 import { BiMoon } from "react-icons/bi";
 import { BiSun } from "react-icons/bi";
 
+import { ThemeProps } from "../../styles/Themes";
+
+type GlobalThemeProps = {
+  theme: ThemeProps;
+};
+
 function Header({ themeToggler, themeMode }: any) {
   return (
     <Container>
       <h1>
-        Cat Notepad <FiCoffee />
+        Cat Notepad{" "}
+        <span className="logo">
+          <FiCoffee />{" "}
+        </span>
       </h1>
       <ThemeMode onClick={() => themeToggler()}>
         {themeMode === "light" ? <BiSun /> : <BiMoon />}
@@ -26,6 +35,10 @@ const Container = styled.div`
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   justify-content: space-between;
+  color: ${({ theme }: GlobalThemeProps) => theme.color};
+  .logo {
+    color: #8a43f2;
+  }
 `;
 
 const ThemeMode = styled.div`

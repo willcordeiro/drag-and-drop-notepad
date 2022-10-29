@@ -7,9 +7,9 @@ export interface ThemeProps {
 
 export const darkTheme: ThemeProps = {
   background: "#1f1a24",
-  color: "#ffffff",
+  color: "#d3cbcb",
   colorB: "#f2e7fe",
-  dragging: "#b37bf7",
+  dragging: "#c9a7f3",
 };
 
 export const lightTheme: ThemeProps = {
