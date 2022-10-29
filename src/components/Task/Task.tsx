@@ -42,11 +42,11 @@ type TaskContent = {
 };
 
 const TaskContent = styled.div<TaskContent>`
-  border: 1px solid ${(props) => (props.isDragging ? "#598ae7" : "lightgrey")};
+  border: 1px solid ${(props) => (props.isDragging ? "#8a43f2" : "lightgrey")};
   padding: 7px;
   margin-bottom: 8px;
   border-radius: 2px;
-  background-color: ${(props) => (props.isDragging ? "#598ae7" : "white")};
+  background-color: ${(props) => (props.isDragging ? "#8a43f2" : "white")};
   width: 95%;
   height: 100%;
   font-size: 1.1rem;

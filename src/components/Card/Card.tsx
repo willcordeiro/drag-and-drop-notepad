@@ -116,7 +116,10 @@ const Cross = styled.div`
   cursor: pointer;
   font-size: 1rem;
   text-align: right;
-  color: grey;
+  color: #3f3d3d;
+  :hover {
+    opacity: 0.7;
+  }
 `;
 
 type TaskList = {
@@ -140,7 +143,7 @@ const NewTaskButton = styled.div`
   font-size: 0.9rem;
 
   :hover {
-    background-color: #598ae7;
+    background-color: #8a43f2;
     border-radius: 3px;
     color: white;
   }
