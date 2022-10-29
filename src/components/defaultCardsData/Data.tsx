@@ -5,11 +5,11 @@ export const ITEM_TYPES = {
 
 export const DATASET = {
   tasks: {
-    "task-1": { id: "task-1", content: "water plants" },
-    "task-2": { id: "task-2", content: "buy oat milk" },
-    "task-3": { id: "task-3", content: "build a trello board" },
-    "task-4": { id: "task-4", content: "have a beach day" },
-    "task-5": { id: "task-5", content: "build tic tac toe" },
+    "task-1": { id: "task-1", content: "home works" },
+    "task-2": { id: "task-2", content: "give me a coffe" },
+    "task-3": { id: "task-3", content: "my task for work" },
+    "task-4": { id: "task-4", content: "fun things" },
+    "task-5": { id: "task-5", content: "finished task" },
   },
   cards: {
     "card-1": {
