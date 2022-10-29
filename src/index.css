@@ -3,4 +3,5 @@ body {
   font: 0.9em Inconsolata;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Charlie Display", sans-serif;
 }

@@ -3,6 +3,8 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import Task from "../Task/Task";
 import EditInput from "../EditInput/EditInput";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 
 function Card(props: any) {
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
@@ -38,7 +40,9 @@ function Card(props: any) {
                 {props.card.title}
               </Title>
             )}
-            <Cross onClick={props.onRemoveCard}>x</Cross>
+            <Cross onClick={props.onRemoveCard}>
+              <AiFillCloseCircle />
+            </Cross>
           </TitleBar>
           <Droppable droppableId={props.card.id} type="task">
             {(provided, snapshot) => (
@@ -75,7 +79,7 @@ function Card(props: any) {
               />
             ) : (
               <NewTaskButton onClick={() => setIsAddingNewTask(true)}>
-                + New Task
+                <AiOutlinePlus /> New Task
               </NewTaskButton>
             )}
           </NewTaskBar>
@@ -91,7 +95,7 @@ const CardContainer = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 4px;
-  width: 220px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -102,13 +106,14 @@ const TitleBar = styled.div`
   justify-content: space-between;
 `;
 const Title = styled.h3`
-  padding: 8px;
-  font-size: 1.5em;
+  padding: 0 12px;
+  font-size: 1.2em;
   text-overflow: ellipsis;
 `;
 const Cross = styled.div`
-  padding: 8px 12px;
+  padding: 20px 12px;
   cursor: pointer;
+  font-size: 1rem;
   text-align: right;
   color: grey;
 `;
@@ -126,11 +131,18 @@ const TaskList = styled.div<TaskList>`
 `;
 
 const NewTaskButton = styled.div`
-  padding: 8px;
-  margin: 8px;
+  padding: 10px;
+  margin: 10px 7px;
   cursor: pointer;
   text-align: right;
   color: grey;
+  font-size: 0.9rem;
+
+  :hover {
+    background-color: #598ae7;
+    border-radius: 3px;
+    color: white;
+  }
 `;
 
 const NewTaskBar = styled.div`
