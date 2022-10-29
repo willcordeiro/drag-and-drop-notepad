@@ -1,4 +1,3 @@
-import "./App.css";
 import Header from "./components/Header/Header";
 import Notepad from "./components/Notepad/Notepad";
 import { ThemeProvider } from "styled-components";

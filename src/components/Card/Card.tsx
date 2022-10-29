@@ -5,6 +5,11 @@ import Task from "../Task/Task";
 import EditInput from "../EditInput/EditInput";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
+import { ThemeProps } from "../../styles/Themes";
+
+type GlobalThemeProps = {
+  theme: ThemeProps;
+};
 
 function Card(props: any) {
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
@@ -93,12 +98,13 @@ export default Card;
 
 const CardContainer = styled.div`
   margin: 8px;
-  border: 1px solid lightgrey;
+  border: 1px solid ${({ theme }: GlobalThemeProps) => theme.colorB};
   border-radius: 4px;
   width: 300px;
   display: flex;
+  color: ${({ theme }: GlobalThemeProps) => theme.color};
   flex-direction: column;
-  background-color: white;
+  background-color: ${({ theme }: GlobalThemeProps) => theme.background};
 `;
 
 const TitleBar = styled.div`
@@ -116,7 +122,7 @@ const Cross = styled.div`
   cursor: pointer;
   font-size: 1rem;
   text-align: right;
-  color: #3f3d3d;
+  color: ${({ theme }: GlobalThemeProps) => theme.color};
   :hover {
     opacity: 0.7;
   }
@@ -129,7 +135,10 @@ type TaskList = {
 const TaskList = styled.div<TaskList>`
   padding: 8px;
   background-color: ${(props) =>
-    props.isDraggingOver ? "#ece8e1" : "inherit"};
+    props.isDraggingOver
+      ? ({ theme }: GlobalThemeProps) => theme.dragging
+      : "inherit"};
+
   min-height: 100px;
   height: 100%;
 `;

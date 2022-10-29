@@ -1,6 +1,11 @@
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import EditInput from "../EditInput/EditInput";
+import { ThemeProps } from "../../styles/Themes";
+
+type GlobalThemeProps = {
+  theme: ThemeProps;
+};
 
 function Task(props: any) {
   return (
@@ -46,14 +51,17 @@ const TaskContent = styled.div<TaskContent>`
   padding: 7px;
   margin-bottom: 8px;
   border-radius: 2px;
-  background-color: ${(props) => (props.isDragging ? "#8a43f2" : "white")};
+  background-color: ${(props) =>
+    props.isDragging
+      ? "#8a43f2"
+      : ({ theme }: GlobalThemeProps) => theme.background};
   width: 95%;
   height: 100%;
   font-size: 1.1rem;
   overflow-wrap: break-word;
   cursor: pointer;
-  color: ${(props) => (props.isDragging ? "white" : "black")};
-
+  color: ${(props) =>
+    props.isDragging ? "white" : ({ theme }: GlobalThemeProps) => theme.color};
   :hover {
     opacity: 0.7;
   }

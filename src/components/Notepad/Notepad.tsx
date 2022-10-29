@@ -49,7 +49,7 @@ const Container = styled.div`
   width: 90%;
 `;
 
-const Menu = styled.div`
+export const Menu = styled.div`
   margin: 2em;
   display: flex;
   flex-direction: column;

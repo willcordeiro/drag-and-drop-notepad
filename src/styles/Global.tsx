@@ -8,7 +8,12 @@ type GlobalThemeProps = {
 const GlobalStyles: any = createGlobalStyle`
   body {
   background-color: ${({ theme }: GlobalThemeProps) => theme.background};
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Charlie Display", sans-serif;
   }
+
   
   `;
 
