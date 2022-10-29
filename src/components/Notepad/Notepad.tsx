@@ -62,7 +62,6 @@ const Note = styled.div`
 
 const NewCard = styled.div`
   font-size: 1em;
-  color: grey;
   min-width: 100px;
   text-align: center;
   cursor: pointer;

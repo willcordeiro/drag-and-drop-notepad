@@ -107,8 +107,9 @@ const TitleBar = styled.div`
 `;
 const Title = styled.h3`
   padding: 0 12px;
-  font-size: 1.2em;
+  font-size: 1.3em;
   text-overflow: ellipsis;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 `;
 const Cross = styled.div`
   padding: 20px 12px;
@@ -125,7 +126,7 @@ type TaskList = {
 const TaskList = styled.div<TaskList>`
   padding: 8px;
   background-color: ${(props) =>
-    props.isDraggingOver ? "skyblue" : "inherit"};
+    props.isDraggingOver ? "#ece8e1" : "inherit"};
   min-height: 100px;
   height: 100%;
 `;
