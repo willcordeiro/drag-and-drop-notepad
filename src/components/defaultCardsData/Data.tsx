@@ -23,7 +23,7 @@ export const DATASET = {
       taskIds: ["task-3"],
     },
     "card-3": { id: "card-3", title: "Fun Todos", taskIds: ["task-4"] },
-    "card-4": { id: "card-4", title: "Completed", taskIds: ["task-5"] },
+    "card-4": { id: "card-4", title: "Done", taskIds: ["task-5"] },
   },
   cardOrder: ["card-1", "card-2", "card-3", "card-4"],
 };

@@ -8,12 +8,12 @@ import sunnyDay from "../../assets/audios/sunny day.mp3";
 import summerRain from "../../assets/audios/summer-rain.mp3";
 
 export const audiosData = [
-  { audio: LofiStudyfrom },
-  { audio: campfire },
-  { audio: emptyMindLofi },
-  { audio: lofiHipHop },
-  { audio: spiritBlossomLofi },
-  { audio: street },
-  { audio: sunnyDay },
-  { audio: summerRain },
+  { audio: LofiStudyfrom, audioName: "Lofi Study" },
+  { audio: campfire, audioName: "Campfire " },
+  { audio: emptyMindLofi, audioName: "Lofi empty mind" },
+  { audio: lofiHipHop, audioName: "" },
+  { audio: spiritBlossomLofi, audioName: "Lofi spirit blossom" },
+  { audio: street, audioName: "Street" },
+  { audio: sunnyDay, audioName: "Sunny Day" },
+  { audio: summerRain, audioName: "Summer Rain" },
 ];

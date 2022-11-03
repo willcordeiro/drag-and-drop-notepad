@@ -24,8 +24,9 @@ function Notepad() {
         <Note>
           you can add, edit, or remove cards and tasks. double click to edit
           card title or task content. to remove a task just let the content
-          empty. drag/drop card or task to desired order. your edited changes
-          are saved feel free to use!
+          empty. drag/drop card or task to desired order. You can toggle the
+          page theme as you wish by clicking in the sun/moon icons. Your edited
+          changes are saved feel free to use!
         </Note>
         <NewCard onClick={onAddNewCard}>+ New Card</NewCard>
       </Menu>
