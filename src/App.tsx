@@ -5,6 +5,7 @@ import GlobalStyles from "./styles/Global";
 import ThemeContext from "./context/ThemeContext";
 import useThemeMode from "./hooks/useThemeMode";
 import { lightTheme, darkTheme } from "./styles/Themes";
+import Audio from "./components/Audio/Audio";
 
 const App: React.FC = () => {
   const { theme, themeToggler } = useThemeMode();
@@ -16,7 +17,10 @@ const App: React.FC = () => {
       <ThemeContext>
         <ThemeProvider theme={themeMode}>
           <GlobalStyles />
-          <Header themeMode={theme} themeToggler={themeToggler} /> <Notepad />
+          <Header
+            themeMode={theme}
+            themeToggler={themeToggler}
+          /> <Notepad /> <Audio />
         </ThemeProvider>
       </ThemeContext>
     </>
