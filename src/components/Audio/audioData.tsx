@@ -8,12 +8,20 @@ import sunnyDay from "../../assets/audios/sunny day.mp3";
 import summerRain from "../../assets/audios/summer-rain.mp3";
 
 export const audiosData = [
-  { audio: LofiStudy, audioName: "Lofi Study" },
-  { audio: campfire, audioName: "Campfire" },
-  { audio: emptyMindLofi, audioName: "Lofi empty mind" },
-  { audio: lofiHipHop, audioName: "Lofi Hip Hop" },
-  { audio: spiritBlossomLofi, audioName: "Lofi spirit blossom" },
-  { audio: street, audioName: "Street" },
-  { audio: sunnyDay, audioName: "Sunny Day" },
-  { audio: summerRain, audioName: "Summer Rain" },
+  { audio: LofiStudy, audioName: "Lofi Study", propsName: "LofiStudy" },
+  { audio: campfire, audioName: "Campfire", propsName: "campfire" },
+  {
+    audio: emptyMindLofi,
+    audioName: "Lofi empty mind",
+    propsName: "emptyMindLofi",
+  },
+  { audio: lofiHipHop, audioName: "Lofi Hip Hop", propsName: "lofiHipHop" },
+  {
+    audio: spiritBlossomLofi,
+    audioName: "Lofi spirit blossom",
+    propsName: "spiritBlossomLofi",
+  },
+  { audio: street, audioName: "Street", propsName: "street" },
+  { audio: sunnyDay, audioName: "Sunny Day", propsName: "sunnyDay" },
+  { audio: summerRain, audioName: "Summer Rain", propsName: "summerRain" },
 ];

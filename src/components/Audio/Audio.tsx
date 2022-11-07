@@ -16,8 +16,9 @@ const CustomPaper = styled(Paper)(({ theme }) => ({
   backgroundColor: "transparent",
   marginLeft: theme.spacing(6),
   marginRight: theme.spacing(6),
+  margin: "20px",
   padding: theme.spacing(2),
-  border: "solid #ece8e1 2px",
+  color: "white",
 }));
 
 type PSlider = {
@@ -41,41 +42,101 @@ const PSlider = styled(Slider)<PSlider>(({ theme, ...props }: any) => ({
   },
 }));
 
+const musicinitialState: any = {
+  LofiStudy: false,
+  campfire: false,
+  emptyMindLofi: false,
+  lofiHipHop: false,
+  spiritBlossomLofi: false,
+  street: false,
+  sunnyDay: false,
+  summerRain: false,
+};
+const muteinitialState: any = {
+  LofiStudy: false,
+  campfire: false,
+  emptyMindLofi: false,
+  lofiHipHop: false,
+  spiritBlossomLofi: false,
+  street: false,
+  sunnyDay: false,
+  summerRain: false,
+};
+
+const valumeStack: any = {
+  LofiStudy: 30,
+  campfire: 30,
+  emptyMindLofi: 30,
+  lofiHipHop: 30,
+  spiritBlossomLofi: 30,
+  street: 30,
+  sunnyDay: 30,
+  summerRain: 30,
+};
+
 export default function Player() {
   const audioPlayer: any = useRef([]);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(30);
-  const [mute, setMute] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(musicinitialState);
+  const [volume, setVolume] = useState(valumeStack);
+  const [mute, setMute] = useState(muteinitialState);
+  const [player, setPlayer] = useState(false);
 
-  const togglePlay = (i: any) => {
-    if (!isPlaying) {
+  const togglePlay = (i: any, audioName: any) => {
+    if (!player) {
+      setPlayer(true);
+      setIsPlaying({ ...musicinitialState, [audioName]: true });
       audioPlayer.current[i].play();
     } else {
       audioPlayer.current[i].pause();
+      setIsPlaying({ ...musicinitialState, [audioName]: ![audioName] });
+      setPlayer((prev) => !prev);
     }
-    setIsPlaying((prev) => !prev);
   };
 
-  function VolumeBtns() {
-    return mute ? (
+  function VolumeBtns(i: any, audioName: any) {
+    return mute[i.audioName] ? (
       <VolumeOffIcon
         sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
-        onClick={() => setMute(!mute)}
+        onClick={() => {
+          if (!mute[i.audioName]) {
+            setMute({ ...muteinitialState, [i.audioName]: true });
+          } else {
+            setMute({ ...muteinitialState, [i.audioName]: false });
+          }
+        }}
       />
     ) : volume <= 20 ? (
       <VolumeMuteIcon
         sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
-        onClick={() => setMute(!mute)}
+        onClick={() => {
+          if (!mute[i.audioName]) {
+            setMute({ ...muteinitialState, [i.audioName]: true });
+          } else {
+            setMute({ ...muteinitialState, [i.audioName]: false });
+          }
+        }}
       />
     ) : volume <= 75 ? (
       <VolumeDownIcon
         sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
-        onClick={() => setMute(!mute)}
+        onClick={() => {
+          if (!mute[i.audioName]) {
+            setMute({ ...muteinitialState, [i.audioName]: true });
+          } else {
+            setMute({ ...muteinitialState, [i.audioName]: false });
+          }
+        }}
       />
     ) : (
       <VolumeUpIcon
         sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
-        onClick={() => setMute(!mute)}
+        onClick={() => {
+          if (!mute[i.audioName]) {
+            setMute({ ...muteinitialState, [i.audioName]: true });
+          } else {
+            setMute({ ...muteinitialState, [i.audioName]: false });
+          }
+        }}
       />
     );
   }
@@ -85,15 +146,15 @@ export default function Player() {
       {audiosData.map((item, i) => (
         <Div key={i}>
           <audio
-            muted={mute}
+            muted={mute[item.propsName]}
             ref={(audioPlayer0): any => (audioPlayer.current[i] = audioPlayer0)}
           >
             <source src={item.audio} type="audio/mpeg" />
           </audio>
           <CustomPaper>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              {item.audioName}{" "}
-              {!isPlaying ? (
+              {item.audioName}
+              {!isPlaying[item.propsName] ? (
                 <PlayArrowIcon
                   fontSize={"large"}
                   sx={{
@@ -102,7 +163,7 @@ export default function Player() {
                     cursor: "pointer",
                   }}
                   onClick={() => {
-                    togglePlay(i);
+                    togglePlay(i, item.propsName);
                   }}
                 />
               ) : (
@@ -114,35 +175,10 @@ export default function Player() {
                     cursor: "pointer",
                   }}
                   onClick={() => {
-                    togglePlay(i);
+                    togglePlay(i, item.propsName);
                   }}
                 />
               )}
-              <Stack
-                direction="row"
-                spacing={1}
-                sx={{
-                  display: "flex",
-                  justifyContent: "flex-start",
-                  width: "25%",
-                  alignItems: "center",
-                }}
-              ></Stack>
-              <Stack
-                direction="row"
-                spacing={1}
-                sx={{
-                  display: "flex",
-                  width: "40%",
-                  alignItems: "center",
-                }}
-              ></Stack>
-              <Stack
-                sx={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                }}
-              />
             </Box>
             <Stack
               spacing={1}
@@ -152,14 +188,14 @@ export default function Player() {
                 alignItems: "center",
               }}
             >
-              <VolumeBtns />
+              <VolumeBtns i={i} audioName={item.propsName} />
 
               <PSlider
                 min={0}
                 max={100}
                 value={volume}
-                onChange={(e: any, v: any) => setVolume(v)}
-                thumbless={undefined}
+                onChange={(e: any, v: any) => setVolume(5)}
+                thumbless={""}
               />
             </Stack>
           </CustomPaper>
