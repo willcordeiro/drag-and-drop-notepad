@@ -9,18 +9,18 @@ import summerRain from "../../assets/audios/summer-rain.mp3";
 
 export const audiosData = [
   { audio: LofiStudy, audioName: "Lofi Study", propsName: "LofiStudy" },
-  { audio: campfire, audioName: "Campfire", propsName: "campfire" },
   {
     audio: emptyMindLofi,
-    audioName: "Lofi empty mind",
+    audioName: "Lofi Empty Mind",
     propsName: "emptyMindLofi",
   },
   { audio: lofiHipHop, audioName: "Lofi Hip Hop", propsName: "lofiHipHop" },
   {
     audio: spiritBlossomLofi,
-    audioName: "Lofi spirit blossom",
+    audioName: "Lofi Spirit Blossom",
     propsName: "spiritBlossomLofi",
   },
+  { audio: campfire, audioName: "Campfire", propsName: "campfire" },
   { audio: street, audioName: "Street", propsName: "street" },
   { audio: sunnyDay, audioName: "Sunny Day", propsName: "sunnyDay" },
   { audio: summerRain, audioName: "Summer Rain", propsName: "summerRain" },

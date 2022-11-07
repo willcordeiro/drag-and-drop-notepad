@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { styled, Slider, Paper, Stack, Box } from "@mui/material";
+import { Slider, Paper, Stack, Box } from "@mui/material";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
@@ -7,40 +7,12 @@ import VolumeMuteIcon from "@mui/icons-material/VolumeMute";
 import PauseIcon from "@mui/icons-material/Pause";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { audiosData } from "./audioData";
+import styled from "styled-components";
+import { ThemeProps } from "../../styles/Themes";
 
-const Div = styled("div")(({ theme }) => ({
-  width: "30%",
-}));
-
-const CustomPaper = styled(Paper)(({ theme }) => ({
-  backgroundColor: "transparent",
-  marginLeft: theme.spacing(6),
-  marginRight: theme.spacing(6),
-  margin: "20px",
-  padding: theme.spacing(2),
-  color: "white",
-}));
-
-type PSlider = {
-  thumbless: any;
-  min: any;
-  max: any;
-  value: any;
-  onChange: any;
+type GlobalThemeProps = {
+  theme: ThemeProps;
 };
-
-const PSlider = styled(Slider)<PSlider>(({ theme, ...props }: any) => ({
-  color: "#ece8e1",
-  height: 2,
-  "&:hover": {
-    cursor: "auto",
-  },
-  "& .MuiSlider-thumb": {
-    width: "13px",
-    height: "13px",
-    display: props.thumbless ? "none" : "block",
-  },
-}));
 
 const musicinitialState: any = {
   LofiStudy: false,
@@ -110,7 +82,10 @@ export default function Player() {
       />
     ) : volume[i.audioName] <= 20 ? (
       <VolumeMuteIcon
-        sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
+        sx={{
+          color: `color: ${({ theme }: GlobalThemeProps) => theme.color};`,
+          "&:hover": { color: "#6e38be" },
+        }}
         onClick={() => {
           if (!mute[i.audioName]) {
             setMute({ ...mute, [i.audioName]: true });
@@ -121,7 +96,10 @@ export default function Player() {
       />
     ) : volume[i.audioName] <= 75 ? (
       <VolumeDownIcon
-        sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
+        sx={{
+          color: `color: ${({ theme }: GlobalThemeProps) => theme.color};`,
+          "&:hover": { color: "#6e38be" },
+        }}
         onClick={() => {
           if (!mute[i.audioName]) {
             setMute({ ...mute, [i.audioName]: true });
@@ -132,7 +110,10 @@ export default function Player() {
       />
     ) : (
       <VolumeUpIcon
-        sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
+        sx={{
+          color: `color: ${({ theme }: GlobalThemeProps) => theme.color};`,
+          "&:hover": { color: "#6e38be" },
+        }}
         onClick={() => {
           if (!mute[i.audioName]) {
             setMute({ ...mute, [i.audioName]: true });
@@ -145,12 +126,13 @@ export default function Player() {
   }
 
   return (
-    <div>
+    <AudiosContainer>
       {audiosData.map((item, i) => (
         <Div key={i}>
           <audio
             muted={mute[item.propsName]}
             ref={(audioPlayer1): any => (audioPlayer.current[i] = audioPlayer1)}
+            loop
           >
             <source src={item.audio} type="audio/mpeg" />
           </audio>
@@ -193,21 +175,59 @@ export default function Player() {
               }}
             >
               <VolumeBtns i={i} audioName={item.propsName} />
-
-              <PSlider
-                min={0}
-                max={100}
-                value={volume[`${item.propsName}`]}
-                onChange={(e: any, v: any) => {
-                  toggleVolume(i, volume[`${item.propsName}`]);
-                  setVolume({ ...volume, [item.propsName]: v });
-                }}
-                thumbless={""}
-              />
+              <PSlider>
+                <Slider
+                  min={0}
+                  valueLabelDisplay="auto"
+                  color="secondary"
+                  max={100}
+                  value={volume[`${item.propsName}`]}
+                  onChange={(e: any, v: any) => {
+                    toggleVolume(i, volume[`${item.propsName}`]);
+                    setVolume({ ...volume, [item.propsName]: v });
+                  }}
+                />
+              </PSlider>
             </Stack>
           </CustomPaper>
         </Div>
       ))}
-    </div>
+    </AudiosContainer>
   );
 }
+
+const Div = styled.div``;
+
+const AudiosContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1f);
+  grid-template-rows: repeat(2, 1f);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 150px;
+`;
+
+const CustomPaper = styled.div`
+  background-color: "transparent";
+  margin-left: 6px;
+  margin-right: 6px;
+  margin: 20px;
+  padding: 2px;
+  color: ${({ theme }: GlobalThemeProps) => theme.color};
+`;
+
+const PSlider = styled.div`
+  height: 25px;
+  width: 100%;
+  &:hover {
+    cursor: auto;
+  }
+  & .MuiSlider-thumb {
+    width: 13px;
+    height: 13px;
+    display: block;
+    color: ${({ theme }: GlobalThemeProps) => theme.color};
+  }
+`;
