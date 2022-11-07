@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { styled, Slider, Paper, Stack, Box } from "@mui/material";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
@@ -79,17 +79,14 @@ export default function Player() {
   const [isPlaying, setIsPlaying] = useState(musicinitialState);
   const [volume, setVolume] = useState(volumeStack);
   const [mute, setMute] = useState(muteinitialState);
-  const [player, setPlayer] = useState(false);
 
   const togglePlay = (i: any, audioName: any) => {
-    if (!player) {
-      setPlayer(true);
-      setIsPlaying({ ...musicinitialState, [audioName]: true });
+    if (!isPlaying[audioName]) {
+      setIsPlaying({ ...isPlaying, [audioName]: true });
       audioPlayer.current[i].play();
     } else {
       audioPlayer.current[i].pause();
-      setIsPlaying({ ...musicinitialState, [audioName]: ![audioName] });
-      setPlayer((prev) => !prev);
+      setIsPlaying({ ...isPlaying, [audioName]: ![audioName] });
     }
   };
 
@@ -105,31 +102,31 @@ export default function Player() {
         sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
         onClick={() => {
           if (!mute[i.audioName]) {
-            setMute({ ...muteinitialState, [i.audioName]: true });
+            setMute({ ...mute, [i.audioName]: true });
           } else {
-            setMute({ ...muteinitialState, [i.audioName]: false });
+            setMute({ ...mute, [i.audioName]: false });
           }
         }}
       />
-    ) : volume <= 20 ? (
+    ) : volume[i.audioName] <= 20 ? (
       <VolumeMuteIcon
         sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
         onClick={() => {
           if (!mute[i.audioName]) {
-            setMute({ ...muteinitialState, [i.audioName]: true });
+            setMute({ ...mute, [i.audioName]: true });
           } else {
-            setMute({ ...muteinitialState, [i.audioName]: false });
+            setMute({ ...mute, [i.audioName]: false });
           }
         }}
       />
-    ) : volume <= 75 ? (
+    ) : volume[i.audioName] <= 75 ? (
       <VolumeDownIcon
         sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
         onClick={() => {
           if (!mute[i.audioName]) {
-            setMute({ ...muteinitialState, [i.audioName]: true });
+            setMute({ ...mute, [i.audioName]: true });
           } else {
-            setMute({ ...muteinitialState, [i.audioName]: false });
+            setMute({ ...mute, [i.audioName]: false });
           }
         }}
       />
@@ -138,9 +135,9 @@ export default function Player() {
         sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
         onClick={() => {
           if (!mute[i.audioName]) {
-            setMute({ ...muteinitialState, [i.audioName]: true });
+            setMute({ ...mute, [i.audioName]: true });
           } else {
-            setMute({ ...muteinitialState, [i.audioName]: false });
+            setMute({ ...mute, [i.audioName]: false });
           }
         }}
       />
@@ -203,7 +200,7 @@ export default function Player() {
                 value={volume[`${item.propsName}`]}
                 onChange={(e: any, v: any) => {
                   toggleVolume(i, volume[`${item.propsName}`]);
-                  setVolume({ ...volumeStack, [item.propsName]: v });
+                  setVolume({ ...volume, [item.propsName]: v });
                 }}
                 thumbless={""}
               />
