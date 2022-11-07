@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { styled, Slider, Paper, Stack, Box } from "@mui/material";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
@@ -63,7 +63,7 @@ const muteinitialState: any = {
   summerRain: false,
 };
 
-const valumeStack: any = {
+const volumeStack: any = {
   LofiStudy: 30,
   campfire: 30,
   emptyMindLofi: 30,
@@ -77,7 +77,7 @@ const valumeStack: any = {
 export default function Player() {
   const audioPlayer: any = useRef([]);
   const [isPlaying, setIsPlaying] = useState(musicinitialState);
-  const [volume, setVolume] = useState(valumeStack);
+  const [volume, setVolume] = useState(volumeStack);
   const [mute, setMute] = useState(muteinitialState);
   const [player, setPlayer] = useState(false);
 
@@ -90,6 +90,12 @@ export default function Player() {
       audioPlayer.current[i].pause();
       setIsPlaying({ ...musicinitialState, [audioName]: ![audioName] });
       setPlayer((prev) => !prev);
+    }
+  };
+
+  const toggleVolume = (i: any, audioName: any) => {
+    if (audioPlayer) {
+      audioPlayer.current[i].volume = audioName / 100;
     }
   };
 
@@ -147,10 +153,11 @@ export default function Player() {
         <Div key={i}>
           <audio
             muted={mute[item.propsName]}
-            ref={(audioPlayer0): any => (audioPlayer.current[i] = audioPlayer0)}
+            ref={(audioPlayer1): any => (audioPlayer.current[i] = audioPlayer1)}
           >
             <source src={item.audio} type="audio/mpeg" />
           </audio>
+
           <CustomPaper>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               {item.audioName}
@@ -193,8 +200,11 @@ export default function Player() {
               <PSlider
                 min={0}
                 max={100}
-                value={volume}
-                onChange={(e: any, v: any) => setVolume(5)}
+                value={volume[`${item.propsName}`]}
+                onChange={(e: any, v: any) => {
+                  toggleVolume(i, volume[`${item.propsName}`]);
+                  setVolume({ ...volumeStack, [item.propsName]: v });
+                }}
                 thumbless={""}
               />
             </Stack>
