@@ -128,7 +128,7 @@ export default function Player() {
   return (
     <AudiosContainer>
       {audiosData.map((item, i) => (
-        <Div key={i}>
+        <section key={i}>
           <audio
             muted={mute[item.propsName]}
             ref={(audioPlayer1): any => (audioPlayer.current[i] = audioPlayer1)}
@@ -190,20 +190,18 @@ export default function Player() {
               </PSlider>
             </Stack>
           </CustomPaper>
-        </Div>
+        </section>
       ))}
     </AudiosContainer>
   );
 }
 
-const Div = styled.div``;
-
 const AudiosContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1f);
-  grid-template-rows: repeat(2, 1f);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
+  // display: grid;
+  // grid-template-columns: repeat(2, 1fr);
+  // grid-template-rows: 1fr;
+  // grid-column-gap: 10px;
+  // grid-row-gap: 10px;
   width: 50%;
   margin: 0 auto;
   margin-top: 150px;
