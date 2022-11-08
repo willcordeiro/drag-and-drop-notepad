@@ -1,13 +1,21 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import CatPurring from "../../assets/audios/cat-purring-and-meow.mp3";
+import { CatData } from "./CatAudios";
 
 function Cat() {
-  const audioCat: any = useRef();
+  const audioCat: any = useRef([]);
   const [cat, setCat] = useState(false);
 
   const handleCatMeow = () => {
-    audioCat.current.play();
+    if (!cat) {
+      audioCat.current[0].play();
+      setCat(true);
+      console.log("false");
+    } else {
+      audioCat.current[1].play();
+      setCat(false);
+      console.log("true");
+    }
   };
 
   return (
@@ -16,9 +24,14 @@ function Cat() {
         handleCatMeow();
       }}
     >
-      <audio ref={audioCat}>
-        <source src={CatPurring} type="audio/mpeg"></source>
-      </audio>
+      {CatData.map((item, i) => (
+        <audio
+          ref={(audioCat1): any => (audioCat.current[i] = audioCat1)}
+          key={i}
+        >
+          <source src={item.audioCat} type="audio/mpeg"></source>
+        </audio>
+      ))}
       <input type="checkbox" id="check" className="checkboxer" />
       <label className="container" htmlFor="check">
         <div className="box-wiggle">
