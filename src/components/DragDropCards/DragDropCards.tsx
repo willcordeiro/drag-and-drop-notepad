@@ -114,21 +114,32 @@ export default DragDropCards;
 const CardsContainer = styled.div`
   margin: 2em;
   display: flex;
-
-  @media (max-width: 720px) {
+  @media (min-width: 368px) {
     flex-direction: column;
+    justify-items: center;
   }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 368px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    display: grid;
+    justify-content: center;
+    width: 100%;
+  }
+
+  @media only screen and (min-width: 678px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 50px;
+    grid-template-rows: auto;
+    grid-column-gap: 10px;
     grid-row-gap: 10px;
     justify-items: center;
   }
 
-  @media only screen and (min-width: 1700px) {
+  @media only screen and (min-width: 1400px) {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;

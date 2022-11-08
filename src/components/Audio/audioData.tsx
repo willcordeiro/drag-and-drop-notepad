@@ -23,5 +23,5 @@ export const audiosData = [
   { audio: campfire, audioName: "Campfire", propsName: "campfire" },
   { audio: street, audioName: "Street", propsName: "street" },
   { audio: sunnyDay, audioName: "Sunny Day", propsName: "sunnyDay" },
-  { audio: summerRain, audioName: "Summer Rain", propsName: "summerRain" },
+  { audio: summerRain, audioName: "Soft Rain", propsName: "summerRain" },
 ];

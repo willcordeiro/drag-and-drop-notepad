@@ -46,10 +46,11 @@ export default Notepad;
 
 const Container = styled.div`
   display: flex;
-  @media (max-width: 720px) {
+  width: 90%;
+
+  @media (max-width: 768px) {
     flex-direction: column;
   }
-  width: 90%;
 `;
 
 export const Menu = styled.div`

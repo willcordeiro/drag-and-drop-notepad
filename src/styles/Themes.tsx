@@ -19,5 +19,5 @@ export const lightTheme: ThemeProps = {
   color: "#3f3d3d",
   colorB: "gray",
   dragging: "#8a8781",
-  card: "#dbcccc",
+  card: "#e4dcdc",
 };

@@ -15,7 +15,6 @@ function Cat() {
       setCat(false);
     }
   };
-  console.log(audioCat);
 
   return (
     <CatContainer>

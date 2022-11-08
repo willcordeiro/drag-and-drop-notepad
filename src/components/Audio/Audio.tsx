@@ -186,7 +186,6 @@ export default function Player() {
                 <Slider
                   min={0}
                   valueLabelDisplay="auto"
-                  color="primary"
                   max={100}
                   value={volume[`${item.propsName}`]}
                   onChange={(e: any, v: any) => {
@@ -205,11 +204,14 @@ export default function Player() {
 
 const AudiosContainer = styled.div`
   width: 90%;
+  .css-187mznn-MuiSlider-root {
+    color: #3f3d3d;
+  }
 `;
 
 const CustomPaper = styled.div`
   background-color: "transparent";
-  margin: 5px;
+
   margin-top: 20px;
   padding: 2px;
   color: ${({ theme }: GlobalThemeProps) => theme.color};

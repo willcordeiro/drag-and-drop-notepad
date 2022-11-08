@@ -50,7 +50,7 @@ const Container = styled.div`
     text-align: center;
     text-transform: uppercase;
     padding-top: 5px;
-    margin-top: 100px;
+    margin-top: 300px;
   }
 
   footer li {
