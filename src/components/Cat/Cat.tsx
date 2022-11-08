@@ -90,7 +90,7 @@ const CatContainer = styled.div`
     z-index: 20;
     height: 10rem;
     width: 15rem;
-    background-color: #c59c5a;
+    background-color: #edb681;
   }
   .box-wiggle {
     transform-origin: bottom center;
@@ -143,7 +143,7 @@ const CatContainer = styled.div`
     top: 0;
     height: 6rem;
     width: 7rem;
-    background-color: #625a6a;
+    background-color: #000000;
     overflow: hidden;
     border-top-left-radius: 50% 3.5rem;
     border-top-right-radius: 50% 3.5rem;
@@ -164,7 +164,7 @@ const CatContainer = styled.div`
     top: -100%;
     height: 150%;
     width: 100%;
-    background-color: #625a6a;
+    background-color: #000000;
     border-bottom-left-radius: 40% 1.75rem;
     border-bottom-right-radius: 40% 1.75rem;
   }
@@ -182,7 +182,7 @@ const CatContainer = styled.div`
     bottom: calc(100% - 4em);
     height: 4em;
     width: 2.5em;
-    background-color: #625a6a;
+    background-color: #000000;
     transform-origin: bottom center;
   }
   .jasp-ear::after {
@@ -229,7 +229,7 @@ const CatContainer = styled.div`
     height: 0.75rem;
     width: 0.875rem;
     border-radius: 50%;
-    background-color: #acde62;
+    background-color: #f1e101;
     transform-origin: center 70%;
     animation-name: blinky;
     animation-duration: 5s;
@@ -318,7 +318,7 @@ const CatContainer = styled.div`
     width: 9.5rem;
     border-top-left-radius: 50% 3rem;
     border-top-right-radius: 20% 3rem;
-    background-color: #625a6a;
+    background-color: #000000;
   }
   .jasp-body::before {
     content: "";
@@ -340,7 +340,7 @@ const CatContainer = styled.div`
     border-top-right-radius: 30% 1rem;
     border-bottom-left-radius: 0.325rem;
     border-bottom-right-radius: 0.325rem;
-    background-color: #9c73e6;
+    background-color: #c48109;
   }
   .mouse::before,
   .mouse::after {
@@ -360,7 +360,7 @@ const CatContainer = styled.div`
     bottom: 0;
     height: 0.25rem;
     width: 2rem;
-    background-color: #9c73e6;
+    background-color: #c48109;
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
   }
@@ -372,7 +372,7 @@ const CatContainer = styled.div`
     width: 1rem;
     border-radius: 50%;
     border-bottom-left-radius: 0.125rem;
-    background-color: #52a494;
+    background-color: #eca2b2;
     transform: rotate(10deg);
   }
   .checkboxer {
