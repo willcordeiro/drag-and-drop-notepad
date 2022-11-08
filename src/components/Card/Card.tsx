@@ -98,7 +98,7 @@ export default Card;
 
 const CardContainer = styled.div`
   margin: 8px;
-  border: 1px solid ${({ theme }: GlobalThemeProps) => theme.colorB};
+  border: 2px solid ${({ theme }: GlobalThemeProps) => theme.colorB};
   border-radius: 4px;
   padding: 5px;
   width: 300px;

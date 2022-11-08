@@ -10,7 +10,7 @@ function Footer() {
         <ul className="icons">
           <li>
             <a
-              href="https://www.aedin.com/in/william-cordeiro-568229238/"
+              href="https://www.linkedin.com/in/william-cordeiro-568229238/"
               target="blank"
             >
               <AiFillLinkedin />

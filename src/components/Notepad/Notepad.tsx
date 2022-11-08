@@ -22,11 +22,11 @@ function Notepad() {
     <Container>
       <Menu>
         <Note>
-          you can add, edit, or remove cards and tasks. double click to edit
-          card title or task content. to remove a task just let the content
-          empty. drag/drop card or task to desired order. You can toggle the
-          page theme as you wish by clicking in the sun/moon icons. Your edited
-          changes are saved feel free to use!
+          Hey mate in this app you can add, edit, or remove cards and tasks.
+          double click to edit card title or task content. to remove a task just
+          let the content empty. drag/drop card or task to desired order. You
+          can toggle the page theme as you wish by clicking in the sun/moon icon
+          in the header. Your edited changes are saved feel free to use!
         </Note>
         <NewCard onClick={onAddNewCard}>+ New Card</NewCard>
       </Menu>

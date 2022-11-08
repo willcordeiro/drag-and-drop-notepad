@@ -15,9 +15,9 @@ export const darkTheme: ThemeProps = {
 };
 
 export const lightTheme: ThemeProps = {
-  background: "#ece8e1",
+  background: "#e6e1da",
   color: "#3f3d3d",
   colorB: "gray",
   dragging: "#8a8781",
-  card: "#e4dcdc",
+  card: "#fafadc",
 };
