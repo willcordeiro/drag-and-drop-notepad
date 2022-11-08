@@ -45,13 +45,10 @@ function Notepad() {
 export default Notepad;
 
 const Container = styled.div`
-  margin: 2em;
   display: flex;
   @media (max-width: 720px) {
     flex-direction: column;
   }
-  align-items: center;
-  justify-items: center;
   width: 90%;
 `;
 

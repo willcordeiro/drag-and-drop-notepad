@@ -117,4 +117,23 @@ const CardsContainer = styled.div`
   @media (max-width: 720px) {
     flex-direction: column;
   }
+
+  @media only screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap: 10px;
+    justify-items: center;
+  }
+
+  @media only screen and (min-width: 1700px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-items: center;
+    width: 100%;
+  }
 `;

@@ -7,6 +7,9 @@ import useThemeMode from "./hooks/useThemeMode";
 import { lightTheme, darkTheme } from "./styles/Themes";
 import Audio from "./components/Audio/Audio";
 import Cat from "./components/Cat/Cat";
+import styled from "styled-components";
+import Footer from "./components/Footer/Footer";
+
 const App: React.FC = () => {
   const { theme, themeToggler } = useThemeMode();
 
@@ -20,7 +23,12 @@ const App: React.FC = () => {
           <Header
             themeMode={theme}
             themeToggler={themeToggler}
-          /> <Notepad /> <Audio /> <Cat />
+          /> <Notepad />{" "}
+          <AudioSection>
+            <Audio />
+            <Cat />
+          </AudioSection>
+          <Footer />
         </ThemeProvider>
       </ThemeContext>
     </>
@@ -28,3 +36,34 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+const AudioSection = styled.div`
+  @media only screen and (min-width: 320px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    display: grid;
+    justify-content: left;
+  }
+
+  @media only screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap: 10px;
+    justify-items: center;
+  }
+
+  @media only screen and (min-width: 1700px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-items: center;
+    width: 100%;
+  }
+`;

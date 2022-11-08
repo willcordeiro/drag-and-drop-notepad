@@ -71,7 +71,11 @@ export default function Player() {
   function VolumeBtns(i: any, audioName: any) {
     return mute[i.audioName] ? (
       <VolumeOffIcon
-        sx={{ color: "#ece8e1", "&:hover": { color: "#6e38be" } }}
+        sx={{
+          color: "#ece8e1",
+          "&:hover": { color: "#6e38be" },
+          cursor: "pointer",
+        }}
         onClick={() => {
           if (!mute[i.audioName]) {
             setMute({ ...mute, [i.audioName]: true });
@@ -85,6 +89,7 @@ export default function Player() {
         sx={{
           color: `color: ${({ theme }: GlobalThemeProps) => theme.color};`,
           "&:hover": { color: "#6e38be" },
+          cursor: "pointer",
         }}
         onClick={() => {
           if (!mute[i.audioName]) {
@@ -99,6 +104,7 @@ export default function Player() {
         sx={{
           color: `color: ${({ theme }: GlobalThemeProps) => theme.color};`,
           "&:hover": { color: "#6e38be" },
+          cursor: "pointer",
         }}
         onClick={() => {
           if (!mute[i.audioName]) {
@@ -113,6 +119,7 @@ export default function Player() {
         sx={{
           color: `color: ${({ theme }: GlobalThemeProps) => theme.color};`,
           "&:hover": { color: "#6e38be" },
+          cursor: "pointer",
         }}
         onClick={() => {
           if (!mute[i.audioName]) {
@@ -179,7 +186,7 @@ export default function Player() {
                 <Slider
                   min={0}
                   valueLabelDisplay="auto"
-                  color="secondary"
+                  color="primary"
                   max={100}
                   value={volume[`${item.propsName}`]}
                   onChange={(e: any, v: any) => {
@@ -197,21 +204,13 @@ export default function Player() {
 }
 
 const AudiosContainer = styled.div`
-  // display: grid;
-  // grid-template-columns: repeat(2, 1fr);
-  // grid-template-rows: 1fr;
-  // grid-column-gap: 10px;
-  // grid-row-gap: 10px;
-  width: 50%;
-  margin: 0 auto;
-  margin-top: 150px;
+  width: 90%;
 `;
 
 const CustomPaper = styled.div`
   background-color: "transparent";
-  margin-left: 6px;
-  margin-right: 6px;
-  margin: 20px;
+  margin: 5px;
+  margin-top: 20px;
   padding: 2px;
   color: ${({ theme }: GlobalThemeProps) => theme.color};
 `;

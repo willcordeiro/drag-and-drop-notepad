@@ -8,22 +8,17 @@ function Cat() {
 
   const handleCatMeow = () => {
     if (!cat) {
-      audioCat.current[0].play();
-      setCat(true);
-      console.log("false");
-    } else {
       audioCat.current[1].play();
+      setCat(true);
+    } else {
+      audioCat.current[0].play();
       setCat(false);
-      console.log("true");
     }
   };
+  console.log(audioCat);
 
   return (
-    <CatContainer
-      onClick={() => {
-        handleCatMeow();
-      }}
-    >
+    <CatContainer>
       {CatData.map((item, i) => (
         <audio
           ref={(audioCat1): any => (audioCat.current[i] = audioCat1)}
@@ -32,7 +27,14 @@ function Cat() {
           <source src={item.audioCat} type="audio/mpeg"></source>
         </audio>
       ))}
-      <input type="checkbox" id="check" className="checkboxer" />
+      <input
+        type="checkbox"
+        id="check"
+        className="checkboxer"
+        onClick={() => {
+          handleCatMeow();
+        }}
+      />
       <label className="container" htmlFor="check">
         <div className="box-wiggle">
           <div className="box">
@@ -87,8 +89,8 @@ const CatContainer = styled.div`
   .box {
     position: relative;
     z-index: 20;
-    height: 7rem;
-    width: 10rem;
+    height: 10rem;
+    width: 15rem;
     background-color: #c59c5a;
   }
   .box-wiggle {
