@@ -3,18 +3,21 @@ export interface ThemeProps {
   color: string;
   colorB: string;
   dragging: string;
+  card: string;
 }
 
 export const darkTheme: ThemeProps = {
   background: "#1f1a24",
   color: "#d3cbcb",
-  colorB: "#f2e7fe",
-  dragging: "#c9a7f3",
+  colorB: "none",
+  dragging: "#b7a7f3",
+  card: "#120a16",
 };
 
 export const lightTheme: ThemeProps = {
-  background: "",
+  background: "#ece8e1",
   color: "#3f3d3d",
-  colorB: "lightgrey",
-  dragging: "#ece8e1",
+  colorB: "gray",
+  dragging: "#8a8781",
+  card: "#dbcccc",
 };

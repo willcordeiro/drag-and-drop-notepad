@@ -84,7 +84,7 @@ function Card(props: any) {
               />
             ) : (
               <NewTaskButton onClick={() => setIsAddingNewTask(true)}>
-                <AiOutlinePlus /> New Task
+                <AiOutlinePlus />
               </NewTaskButton>
             )}
           </NewTaskBar>
@@ -100,11 +100,13 @@ const CardContainer = styled.div`
   margin: 8px;
   border: 1px solid ${({ theme }: GlobalThemeProps) => theme.colorB};
   border-radius: 4px;
+  padding: 5px;
   width: 300px;
+  min-height: 400px;
   display: flex;
   color: ${({ theme }: GlobalThemeProps) => theme.color};
   flex-direction: column;
-  background-color: ${({ theme }: GlobalThemeProps) => theme.background};
+  background-color: ${({ theme }: GlobalThemeProps) => theme.card};
 `;
 
 const TitleBar = styled.div`
@@ -134,6 +136,7 @@ type TaskList = {
 
 const TaskList = styled.div<TaskList>`
   padding: 8px;
+
   background-color: ${(props) =>
     props.isDraggingOver
       ? ({ theme }: GlobalThemeProps) => theme.dragging

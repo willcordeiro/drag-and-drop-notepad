@@ -47,8 +47,7 @@ type TaskContent = {
 };
 
 const TaskContent = styled.div<TaskContent>`
-  border: 1px solid ${(props) => (props.isDragging ? "#8a43f2" : "lightgrey")};
-  padding: 7px;
+  padding: 10px;
   margin-bottom: 8px;
   border-radius: 2px;
   background-color: ${(props) =>
@@ -62,6 +61,7 @@ const TaskContent = styled.div<TaskContent>`
   cursor: pointer;
   color: ${(props) =>
     props.isDragging ? "white" : ({ theme }: GlobalThemeProps) => theme.color};
+
   :hover {
     opacity: 0.7;
   }

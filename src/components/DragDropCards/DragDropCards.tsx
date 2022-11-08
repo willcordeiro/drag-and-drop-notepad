@@ -114,6 +114,7 @@ export default DragDropCards;
 const CardsContainer = styled.div`
   margin: 2em;
   display: flex;
+
   @media (max-width: 720px) {
     flex-direction: column;
   }
