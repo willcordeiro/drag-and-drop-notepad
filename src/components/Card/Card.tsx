@@ -22,7 +22,7 @@ function Card(props: any) {
 
   return (
     <Draggable draggableId={props.card.id} index={props.index}>
-      {(provided) => (
+      {(provided, snapshot) => (
         <CardContainer
           ref={provided.innerRef}
           {...provided.draggableProps}
@@ -52,11 +52,7 @@ function Card(props: any) {
           <Droppable droppableId={props.card.id} type="task">
             {(provided, snapshot) => (
               <>
-                <TaskList
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                  isDraggingOver={snapshot.isDraggingOver}
-                >
+                <TaskList ref={provided.innerRef} {...provided.droppableProps}>
                   {props.tasks.map((task: any, index: any) => (
                     <Task
                       key={task.id}
@@ -130,18 +126,8 @@ const Cross = styled.div`
   }
 `;
 
-type TaskList = {
-  isDraggingOver: any;
-};
-
-const TaskList = styled.div<TaskList>`
+const TaskList = styled.div`
   padding: 8px;
-
-  background-color: ${(props) =>
-    props.isDraggingOver
-      ? ({ theme }: GlobalThemeProps) => theme.dragging
-      : "inherit"};
-
   min-height: 100px;
   height: 100%;
 `;

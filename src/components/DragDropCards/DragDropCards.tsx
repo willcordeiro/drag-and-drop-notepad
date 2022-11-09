@@ -126,8 +126,6 @@ const CardsContainer = styled.div`
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     display: grid;
-    justify-content: center;
-    width: 100%;
   }
 
   @media only screen and (min-width: 678px) {

@@ -14,17 +14,19 @@ type GlobalThemeProps = {
   theme: ThemeProps;
 };
 
-const musicinitialState: any = {
-  LofiStudy: false,
-  campfire: false,
-  emptyMindLofi: false,
-  lofiHipHop: false,
-  spiritBlossomLofi: false,
-  street: false,
-  sunnyDay: false,
-  summerRain: false,
-};
-const muteinitialState: any = {
+interface music {
+  LofiStudy: Boolean;
+  campfire: Boolean;
+  emptyMindLofi: Boolean;
+  lofiHipHop: Boolean;
+  spiritBlossomLofi: Boolean;
+  street: Boolean;
+  sunnyDay: Boolean;
+  summerRain: Boolean;
+  [key: string]: Boolean | undefined;
+}
+
+const musicinitialState: music = {
   LofiStudy: false,
   campfire: false,
   emptyMindLofi: false,
@@ -35,7 +37,30 @@ const muteinitialState: any = {
   summerRain: false,
 };
 
-const volumeStack: any = {
+const muteinitialState: music = {
+  LofiStudy: false,
+  campfire: false,
+  emptyMindLofi: false,
+  lofiHipHop: false,
+  spiritBlossomLofi: false,
+  street: false,
+  sunnyDay: false,
+  summerRain: false,
+};
+
+interface volume {
+  LofiStudy: number;
+  campfire: number;
+  emptyMindLofi: number;
+  lofiHipHop: number;
+  spiritBlossomLofi: number;
+  street: number;
+  sunnyDay: number;
+  summerRain: number;
+  [key: string]: string | number | number[];
+}
+
+const volumeStack: volume = {
   LofiStudy: 30,
   campfire: 30,
   emptyMindLofi: 30,
@@ -47,12 +72,12 @@ const volumeStack: any = {
 };
 
 export default function Player() {
-  const audioPlayer: any = useRef([]);
+  const audioPlayer = useRef<any>([]);
   const [isPlaying, setIsPlaying] = useState(musicinitialState);
   const [volume, setVolume] = useState(volumeStack);
-  const [mute, setMute] = useState(muteinitialState);
+  const [mute, setMute] = useState<any>(muteinitialState);
 
-  const togglePlay = (i: any, audioName: any) => {
+  const togglePlay = (i: number, audioName: string) => {
     if (!isPlaying[audioName]) {
       setIsPlaying({ ...isPlaying, [audioName]: true });
       audioPlayer.current[i].play();
@@ -62,13 +87,13 @@ export default function Player() {
     }
   };
 
-  const toggleVolume = (i: any, audioName: any) => {
+  const toggleVolume = (i: number, audioName: any) => {
     if (audioPlayer) {
       audioPlayer.current[i].volume = audioName / 100;
     }
   };
 
-  function VolumeBtns(i: any, audioName: any) {
+  function VolumeBtns(i: { i: number; audioName: string }) {
     return mute[i.audioName] ? (
       <VolumeOffIcon
         sx={{
@@ -138,7 +163,9 @@ export default function Player() {
         <section key={i}>
           <audio
             muted={mute[item.propsName]}
-            ref={(audioPlayer1): any => (audioPlayer.current[i] = audioPlayer1)}
+            ref={(audioPlayer1): HTMLAudioElement | null =>
+              (audioPlayer.current[i] = audioPlayer1)
+            }
             loop
           >
             <source src={item.audio} type="audio/mpeg" />
@@ -188,7 +215,7 @@ export default function Player() {
                   valueLabelDisplay="auto"
                   max={100}
                   value={volume[`${item.propsName}`]}
-                  onChange={(e: any, v: any) => {
+                  onChange={(e: Event, v: number | number[]) => {
                     toggleVolume(i, volume[`${item.propsName}`]);
                     setVolume({ ...volume, [item.propsName]: v });
                   }}
@@ -203,10 +230,11 @@ export default function Player() {
 }
 
 const AudiosContainer = styled.div`
-  width: 90%;
+  width: 80%;
   .css-187mznn-MuiSlider-root {
     color: #3f3d3d;
   }
+  font-weight: bold;
 `;
 
 const CustomPaper = styled.div`

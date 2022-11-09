@@ -8,7 +8,7 @@ import sunnyDay from "../../assets/audios/sunny day.mp3";
 import summerRain from "../../assets/audios/summer-rain.mp3";
 
 export const audiosData = [
-  { audio: LofiStudy, audioName: "Lofi Study", propsName: "LofiStudy" },
+  { audio: LofiStudy, audioName: "1 Hour Lofi Study", propsName: "LofiStudy" },
   {
     audio: emptyMindLofi,
     audioName: "Lofi Empty Mind",

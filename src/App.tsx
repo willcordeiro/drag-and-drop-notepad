@@ -41,6 +41,7 @@ const AudioSection = styled.div`
   @media only screen and (min-width: 368px) {
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows: 2fr;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     padding: 20px;
