@@ -230,11 +230,22 @@ export default function Player() {
 }
 
 const AudiosContainer = styled.div`
-  width: 80%;
   .css-187mznn-MuiSlider-root {
     color: #3f3d3d;
   }
   font-weight: bold;
+
+  @media only screen and (min-width: 368px) {
+    width: 100%;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 70%;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 60%;
+  }
 `;
 
 const CustomPaper = styled.div`

@@ -12,7 +12,6 @@ type GlobalThemeProps = {
 };
 
 function Card(props: any) {
-  console.log(props);
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
   const onSaveTask = (content: string) => {
     if (content.trim() !== "") {
