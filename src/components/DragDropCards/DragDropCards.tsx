@@ -13,7 +13,7 @@ function DragDropCards({
 }: any) {
   const [editing, setEditing] = useState(null);
 
-  const onAddNewTask = (cardID: any, content: any) => {
+  const onAddNewTask = (cardID: string, content: string) => {
     const newTask = {
       id: "task-" + genRandomID(),
       content,
@@ -27,25 +27,27 @@ function DragDropCards({
     setCards({ ...cards, [cardID]: { ...cards[cardID], taskIds: newTaskIds } });
   };
 
-  const onRemoveCard = (cardID: any) => {
-    const newCardOrder = cardOrder.filter((id: any) => id !== cardID);
+  const onRemoveCard = (cardID: string) => {
+    const newCardOrder = cardOrder.filter((id: string) => id !== cardID);
     setCardOrder(newCardOrder);
 
     const cardTaskIds = cards[cardID].taskIds;
-    cardTaskIds.forEach((taskID: any) => delete tasks[taskID]);
+    cardTaskIds.forEach((taskID: string) => delete tasks[taskID]);
     delete cards[cardID];
     setCards(cards);
     setTasks(tasks);
   };
 
-  const onRemoveTask = (taskID: any, cardID: any) => {
-    const newTaskIds = cards[cardID].taskIds.filter((id: any) => id !== taskID);
+  const onRemoveTask = (taskID: string, cardID: string) => {
+    const newTaskIds = cards[cardID].taskIds.filter(
+      (id: string) => id !== taskID
+    );
     setCards({ ...cards, [cardID]: { ...cards[cardID], taskIds: newTaskIds } });
     delete tasks[taskID];
     setTasks(tasks);
   };
 
-  const onSaveTitleEdit = (cardID: any, newTitle: any) => {
+  const onSaveTitleEdit = (cardID: string, newTitle: string) => {
     if (newTitle !== cards[cardID].title) {
       setCards({
         ...cards,
@@ -58,7 +60,11 @@ function DragDropCards({
     setEditing(null);
   };
 
-  const onSaveTaskEdit = (taskID: any, cardID: any, newContent: any) => {
+  const onSaveTaskEdit = (
+    taskID: string,
+    cardID: string,
+    newContent: string
+  ) => {
     if (newContent.trim() === "") {
       onRemoveTask(taskID, cardID);
     } else if (newContent !== tasks[taskID].content) {
@@ -78,22 +84,26 @@ function DragDropCards({
     <Droppable droppableId="all-cards" direction="horizontal" type="card">
       {(provided) => (
         <CardsContainer {...provided.droppableProps} ref={provided.innerRef}>
-          {cardOrder.map((id: any, index: any) => {
+          {cardOrder.map((id: string, index: string) => {
             const card = cards[id];
 
-            const cardTasks = card.taskIds.map((taskId: any) => tasks[taskId]);
+            const cardTasks = card.taskIds.map(
+              (taskId: string) => tasks[taskId]
+            );
             return (
               <Card
                 key={card.id}
                 card={card}
                 tasks={cardTasks}
                 index={index}
-                onSaveTitleEdit={(title: any) =>
+                onSaveTitleEdit={(title: string) =>
                   onSaveTitleEdit(card.id, title)
                 }
                 onRemoveCard={() => onRemoveCard(card.id)}
-                onAddNewTask={(content: any) => onAddNewTask(card.id, content)}
-                onSaveTaskEdit={(taskID: any, newContent: any) =>
+                onAddNewTask={(content: string) =>
+                  onAddNewTask(card.id, content)
+                }
+                onSaveTaskEdit={(taskID: string, newContent: string) =>
                   onSaveTaskEdit(taskID, card.id, newContent)
                 }
                 onTitleDoubleClick={() => setEditing(card.id)}

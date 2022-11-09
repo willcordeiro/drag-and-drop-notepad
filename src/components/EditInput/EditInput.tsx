@@ -27,8 +27,8 @@ function EditInput(props: any) {
 export default EditInput;
 
 type Input = {
-  fontSize: any;
-  margin: any;
+  fontSize: string;
+  margin: string;
 };
 
 const Input = styled.input<Input>`

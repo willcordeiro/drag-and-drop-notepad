@@ -20,7 +20,9 @@ function Cat() {
     <CatContainer>
       {CatData.map((item, i) => (
         <audio
-          ref={(audioCat1): any => (audioCat.current[i] = audioCat1)}
+          ref={(audioCat1): HTMLAudioElement | null =>
+            (audioCat.current[i] = audioCat1)
+          }
           key={i}
         >
           <source src={item.audioCat} type="audio/mpeg"></source>

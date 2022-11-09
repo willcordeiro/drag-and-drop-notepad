@@ -12,8 +12,9 @@ type GlobalThemeProps = {
 };
 
 function Card(props: any) {
+  console.log(props);
   const [isAddingNewTask, setIsAddingNewTask] = useState(false);
-  const onSaveTask = (content: any) => {
+  const onSaveTask = (content: string) => {
     if (content.trim() !== "") {
       props.onAddNewTask(content);
     }
@@ -53,12 +54,12 @@ function Card(props: any) {
             {(provided, snapshot) => (
               <>
                 <TaskList ref={provided.innerRef} {...provided.droppableProps}>
-                  {props.tasks.map((task: any, index: any) => (
+                  {props.tasks.map((task: any, index: string) => (
                     <Task
                       key={task.id}
                       task={task}
                       index={index}
-                      onSaveTaskEdit={(content: any) =>
+                      onSaveTaskEdit={(content: string) =>
                         props.onSaveTaskEdit(task.id, content)
                       }
                       onTaskDoubleClick={() => props.onTaskDoubleClick(task)}
