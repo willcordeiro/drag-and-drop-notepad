@@ -123,11 +123,6 @@ function DragDropCards({
 export default DragDropCards;
 const CardsContainer = styled.div`
   margin: 2em;
-  display: flex;
-  @media (min-width: 368px) {
-    flex-direction: column;
-    justify-items: center;
-  }
 
   @media only screen and (min-width: 368px) {
     display: grid;
