@@ -4,7 +4,7 @@
 
 ## About this Project!
 
-This is the front end of my personal project, it's a social media created using React, it's functional and i'll implement an API for it soon. I use the Context Provider to set the configs and theme in the local storage of the user browser.
+This is a front end app for notepad and it has some chill songs, it's a cat notepad create using react vite, typescript and react dnd, it's was inspired in trello notepad organization but in a way more simple to make it more easy to use, it has some songs in the app for you enjoy your chill time. Fell free to use it...
 
 Connect with me at [LinkedIn](https://www.linkedin.com/in/william-cordeiro-568229238/)
 
