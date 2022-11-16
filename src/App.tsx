@@ -56,7 +56,7 @@ const AudioSection = styled.div`
     justify-items: center;
   }
 
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1400px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;

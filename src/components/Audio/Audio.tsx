@@ -214,7 +214,6 @@ export default function Player() {
                   min={0}
                   valueLabelDisplay="auto"
                   max={100}
-                  value={volume[`${item.propsName}`]}
                   onChange={(e: Event, v: number | number[]) => {
                     toggleVolume(i, volume[`${item.propsName}`]);
                     setVolume({ ...volume, [item.propsName]: v });

@@ -49,7 +49,7 @@ const Container = styled.div`
   display: flex;
   width: 90%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 980px) {
     flex-direction: column;
   }
 `;
